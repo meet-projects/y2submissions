@@ -65,10 +65,10 @@ def login():
 
 
 
-@app.route("/loginwithID", methods = ['GET', 'POST'])
-def loginwithID():
+@app.route("/loginWithID", methods = ['GET', 'POST'])
+def loginWithID():
 	if request.method  == 'GET':
-		return render_template('loginWithId.html')
+		return render_template('loginWithID.html')
 	else:
 		id_number = request.form['id_number']
 		student = session.query(Student).filter_by(student_id = id_number).one()
