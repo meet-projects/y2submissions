@@ -1,0 +1,35 @@
+@font-face {
+    font-family: meetFont;
+    src: url(ProximaNova.otf);
+}
+
+body{ font-family:meetFont; background-color: #0C344B;text-decoration-color:none; padding:4px; margin:4px;}
+p{font-family:meetFont; color:#FFFFFF;}
+a{font-family:meetFont; color:#FFFFFF; text-decoration: none;}
+h1{font-family:meetFont; color:#D4303C;}
+h2{font-family:meetFont; color: #27A1A1;}
+h3{font-family:meetFont; color:#FFFFFF;}
+h4{font-family:meetFont;}
+#loginModal{z-index: 2;}
+#loginModal p{color:black;}
+.clock{z-index:1;left:25%;}
+ul {
+  list-style-type: none;
+}
+
+iframe {
+    width: 75%;
+    height: 40%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+
+  -moz-box-shadow: 4px 4px 14px #000;
+  -webkit-box-shadow: 4px 4px 14px #000;
+  box-shadow: 4px 4px 14px #000;
+
+
+} 

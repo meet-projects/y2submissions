@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class = "w3-container text-center">
+<form action = "{{ url_for('submitProject')}}" method = 'get' >
+<button> Create a New Project Submisssion</button>
+</form>
+
+<h1 class = "w3-container text-center">Student Submissions:</h1>
+{%if submissions == []%}
+<h2>There are currently no student submissions.</h2>
+{%else%}
+{% for submission in submissions %}
+<div class = 'submissionWindow w3-container w3-center'>
+<h2>{{submission.student.first_name}} {{submission.student.last_name}}</h2>
+
+<a href = "{{submission.url}}" target = "_blank"><h3>{{submission.url}}</h3></a> 
+<iframe src='{{submission.url}}'>
+  <p>Your browser does not support iframes.</p>
+</iframe>
+
+<p>{{submission.description}}</p>
+
+
+</div>
+
+</div>
+
+
+
+
+{%endfor%}
+{%endif%}
+
+
+
+
+{%endblock%}

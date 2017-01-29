@@ -1,0 +1,11 @@
+Flask==0.10.1
+Flask-HTTPAuth==3.1.2
+Jinja2==2.8
+passlib==1.6.5
+python-dateutil==2.4.2
+requests==2.8.1
+SQLAlchemy==1.0.9
+Werkzeug==0.11.2
+gevent
+gunicorn
+

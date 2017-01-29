@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class = "w3-container">
+<h1>Your Profile</h1>
+
+	<form action="{{ url_for('viewProfile') }}" method = 'post'>
+	<p>First Name:</p>
+	<input class="w3-input" type="text" name = "first_name" value = '{{student.first_name}}' readonly>
+	<p>Last Name:</p>
+	<input  class="w3-input" type="text" name = "last_name" value = '{{student.last_name}}' readonly>
+	<p>Username:</p>
+	<input  class="w3-input" type="text" name = "username">
+	  
+	<p>Password: </p>
+		<input  class="w3-input" type="password" name = "password">
+	<p>Verify Password:</p>
+	<input  class="w3-input" type="password" name = "password_verify">
+
+	<input type="submit" name="Save Changes" id="submit">
+</form>
+
+</div>
+
+{%endblock%}

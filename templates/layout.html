@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+     
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    
+    
+
+
+
+    <link rel="icon" type="image/png" href="http://meet.mit.edu/wp-content/themes/costa/img/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://meet.mit.edu/wp-content/themes/costa/img/icons/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="http://meet.mit.edu/wp-content/themes/costa/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://meet.mit.edu/wp-content/themes/costa/img/icons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://meet.mit.edu/wp-content/themes/costa/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="http://meet.mit.edu/wp-content/themes/costa/img/icons/manifest.json">
+    <link rel="shortcut icon" href="http://meet.mit.edu/wp-content/themes/costa/img/icons/favicon.ico">
+
+<title>Y2 Individual Projects</title>
+
+
+<link rel="stylesheet" href="{{url_for('static', filename='flipclock.css')}}">
+
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+
+
+
+</head>
+
+  <body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<script>
+ function disableSubmit() {
+  document.getElementById("submit").disabled = true;
+ }
+
+  function activateButton(element) {
+
+      if(element.checked) {
+        document.getElementById("submit").disabled = false;
+       }
+       else  {
+        document.getElementById("submit").disabled = true;
+      }
+
+  }
+</script>
+
+
+
+
+    
+    <script src="{{url_for('static', filename='flipclock.min.js')}}"></script>
+<script>
+var clock = $('.your-clock').FlipClock({
+// ... your options here
+});
+</script>
+
+    <div class="header w3-container w3-center">
+
+		<a href={{url_for('mainPage')}}>	<h1 class="deepshadow">
+				Y2 Yearlong Individual Projects</h1></a>
+			<h2 class="text-center">Project Submission Upload</h2>
+		</div>
+    <h3 class = "w3-container w3-center">Remaining time for submissions</h3>
+    <div class = "w3-container w3-center">
+<div class="clock w3-center"></div>
+</div>
+<script type="text/javascript">
+    var date = new Date(2017, 01, 18);
+    var now = new Date();
+    var diff = (date.getTime()/1000) - (now.getTime()/1000);
+
+    var clock = $('.clock').FlipClock(diff,{
+        clockFace: 'DailyCounter',
+        countdown: true
+    });  
+</script>
+
+
+
+
+
+	
+	<div class="row sign_in w3-container w3-center">
+
+		
+	
+      {% if 'id' in session %}
+      <p> You are currently signed in as {{session['first_name']}}.<br>
+      <a href = "{{url_for('logout')}}">Log Out</a></p>
+      {% else %}
+      
+
+
+
+
+<button onclick="document.getElementById('loginModal').style.display='block'" class="w3-btn">Sign In</button>
+
+  <div id="loginModal" class="w3-modal w3-container w3-center">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-closebtn">&times;</span>
+        <h3>Log In Here</h3>
+
+
+ <form action="{{ url_for('login') }}" method = 'post'>
+        Username:<br>
+        <input type="text" name="username"><br>
+        Password:<br>
+        <input type="password" name="password"><br>
+         <input type="submit" value="Login">
+
+
+      </form>
+<p > Don't have an account? Create one <b><a style="color:black;" href={{url_for('loginwithID')}}>Here</b>.</a>
+
+
+      
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+       
+{% endif %}
+		<div class=" w3-container w3-pale-blue flash_messages">
+      {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+		</div>
+
+	</div>
+
+
+
+
+    {% block body %}
+
+
+    {% endblock %}
+  
+
+
+
+<footer class = "w3-container w3-center"><img src = "{{url_for('static', filename='meet.png')}}"<br>
+
+<p><a href={{ url_for('mainPage')}}>Home</a></p>
+
+</footer>
+
+  </body>
+</html>

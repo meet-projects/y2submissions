@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class = 'w3-container'>
+<form action="{{ url_for('loginwithID') }}" method = 'post'>
+  <p>Enter your ID Number Here:</p><br>
+  <input class="w3-input" type="text" name="id_number"><br>
+  
+  <input type="submit" name="submit" id="submit" value="Look Up Student">
+</form>
+
+<div> 
+{%endblock%}

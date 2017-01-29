@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+
+
+
+<body onload="disableSubmit()">
+	
+{%if sumbmissions == []%}
+
+<p> You have yet to make any submissions.</p>
+{%else%}
+<h2>Previous Submissions:</h2>
+
+{% for submission in submissions%}
+<div class = "w3-panel w3-card-4 w3-round-xxlarge w3-blue">
+<span class = "w3-left-align"><h4>{{submission.url}}</h4></span>
+<span class = "w3-right-align"> <b>{{submission.timestamp}}</b></span>
+</div>
+{%endfor%}
+{%endif%}
+    
+    <div class="w3-container w3-white w3-center">
+  <h1>Submission Form</h1>
+</div>
+<form action="{{ url_for('submitProject') }}" method = 'post'>
+  <p>Website URL (please include 'http://' in your url):</p>
+  <input class="w3-input" type="text" name="url"><br>
+  <p>Link to your GitHub Repository:</p>
+  <input class="w3-input" type="text" name="github_url"><br>
+  <p>Write a short description about your site:</p>
+  <input  class="w3-input" type="text" name="description"><br>
+
+  <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)"> <p> By checking this box, you are affirming that all of the code in your project was written by you and not copied, stolen, or done by someone else. </p>
+<br>
+  <input type="submit" name="submit" id="submit" value = "Submit Project">
+</form>
+
+
+{%endblock%}
