@@ -4,9 +4,15 @@ import random
 from flask import session as login_session
 from passlib.apps import custom_app_context as pwd_context
 from flask_httpauth import HTTPBasicAuth
+import sys
+import logging
 
 
 app = Flask(__name__)
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 
 DBSession = sessionmaker(bind=engine, autoflush=False)
 session = DBSession()
