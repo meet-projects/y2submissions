@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy import create_engine, func
 from passlib.apps import custom_app_context as pwd_context
+import psycopg2
 
 import datetime
 
@@ -37,5 +38,5 @@ class Student(Base):
 
 
 
-engine = create_engine('sqlite:///submissions.db')
+engine = create_engine('postgres://cacshzietwzevn:a16e4ed0adfc9751a8377e095d1169422e193bbb80bcc1cbf4f3b0ffb376de68@ec2-54-247-166-129.eu-west-1.compute.amazonaws.com:5432/d4rfh9hk6vkk33')
 Base.metadata.create_all(engine)
