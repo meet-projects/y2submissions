@@ -71,6 +71,9 @@ def loginWithID():
 		return render_template('loginWithID.html')
 	else:
 		id_number = request.form['id_number']
+		if session.query(Student).filter_by(student_id = id_number).all() == []:
+			flash("Unable to find a student with this ID number. Please try again")
+			return redirect(url_for('loginWithID'))
 		student = session.query(Student).filter_by(student_id = id_number).one()
 		flash(" Welcome, %s!" % student.first_name)
 		login_session['first_name'] = student.first_name
